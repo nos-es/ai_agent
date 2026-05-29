@@ -17,6 +17,9 @@ schema_run_python_file = types.FunctionDeclaration(
             "args": types.Schema(
                 type=types.Type.ARRAY,
                 description="Optional Array of string containing additional arguments (None if not provided), relative to the working directory (default is the working directory itself)",
+                items=types.Schema(
+                    type=types.Type.STRING
+                ),
             ),
         },
     ),
