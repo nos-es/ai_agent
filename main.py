@@ -31,5 +31,9 @@ if response.usage_metadata is not None and args.verbose:
     print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
     print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
 
+if response.function_calls:
+    for function_call in response.function_calls:
+        print(f"Calling function: {function_call.name}({function_call.args})")
 
-print(response.text)
+
+print(f"Response: {response.text}")
