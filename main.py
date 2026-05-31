@@ -29,7 +29,7 @@ def main() -> None:
             result = generate_content(client, messages, args.verbose)
             if result:
                 print(f"result: {result}")
-            print(result)
+                return
         except Exception as ex:
             print(f"Something went wrong when calling gemini: {ex}")
     print("Maximum of 20 function calls reached")
@@ -43,7 +43,6 @@ def generate_content(client: genai.Client, messages: list[types.Content], verbos
             system_instruction=system_prompt,
             tools=[available_functions]),
         contents=messages)
-
 
     if response.usage_metadata is not None and verbose:
         print(f"Prompt tokens: {
